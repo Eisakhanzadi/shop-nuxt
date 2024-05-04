@@ -4,9 +4,9 @@
 
 <template>
 <div>
-  <header></header>
+  <Header></Header>
     <slot/>
-  <footer></footer>
+  <Footer></Footer>
 </div>
 </template>
 

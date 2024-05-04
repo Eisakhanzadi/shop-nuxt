@@ -3,8 +3,7 @@
 </script>
 
 <template>
-<div class="container bg-red-600">
-hi
+<div class="container mx-auto">
 </div>
 </template>
 
