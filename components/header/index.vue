@@ -6,7 +6,7 @@ const links = [
   },
   {
     name: "دسته بندی ها ",
-    link: "",
+    link: "/categories",
     sub:[
       {
         name:"item-1",
@@ -64,7 +64,17 @@ const links = [
     sub:[
       {
         name:"item-1",
-        link:""
+        link:"",
+        sub:[
+          {
+            name:'item',
+            sub:[
+              {
+                name:'item'
+              }
+            ]
+          }
+        ]
       },
       {
         name:"item-2",
@@ -77,6 +87,9 @@ const links = [
       ]
   },
 ]
+const showPanel =ref(false)
+const showAuthPanel =ref(false)
+const showSearchPanel = ref(false)
 </script>
 
 <template>
@@ -96,27 +109,34 @@ const links = [
             </nuxt-link>
           </h1>
         </div>
-        <div class="flex gap-2">
+        <div class="flex flex-row-reverse gap-2">
           <div class="shop">
             <nuxt-link><i class="fa-solid fa-basket-shopping text-gray-500 p-2 border rounded-full border-gray-400 "/>
             </nuxt-link>
           </div>
           <div class="auth">
-            <nuxt-link><i class="fa-solid fa-user text-gray-500 p-2 border rounded-full border-gray-400 "/></nuxt-link>
+            <button @click="showAuthPanel=true"><i class="fa-solid fa-user text-gray-500 p-2 border rounded-full border-gray-400 "/></button>
           </div>
           <div class="search">
-            <nuxt-link><i class="fa-solid fa-search text-gray-500 p-2 border rounded-full border-gray-400 "/>
-            </nuxt-link>
+            <button @click="showSearchPanel = true"><i class="fa-solid fa-search text-gray-500 p-2 border rounded-full border-gray-400 "/>
+            </button>
           </div>
         </div>
       </div>
     </div>
     <div class="navbar-menu flex justify-center border-t">
       <nav>
-        <ul class="nav flex justify-center gap-10 capitalize py-5">
+        <ul class="nav flex justify-center gap-10 capitalize py-3">
           <headerNavbar v-for="(item , index) in links" :key="index" :data="item" theme="parent" />
         </ul>
       </nav>
+    </div>
+    <div class="login-panel" v-if="showAuthPanel">
+      <auth-signup @close-panel="showAuthPanel = false" @switch-login-panel="showPanel = !showPanel" v-if="showPanel"/>
+      <auth-login @close-panel="showAuthPanel = false" @switch-login-panel="showPanel = !showPanel" v-else/>
+    </div>
+    <div class="search-panel">
+      <search v-if="showSearchPanel" @close-search="showSearchPanel = !showSearchPanel"/>
     </div>
   </div>
 </template>

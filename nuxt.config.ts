@@ -2,7 +2,9 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: [
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/tailwindcss',
+    'nuxt-swiper',
+    '@pinia/nuxt'
   ],
   features:{
     inlineStyles:false
@@ -17,6 +19,4 @@ export default defineNuxtConfig({
       }
     }
   },
-
-  modules: ["@nuxtjs/tailwindcss"]
 })
